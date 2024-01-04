@@ -1,0 +1,31 @@
+<form>
+  <img src="assets/client.png" alt="">
+
+  <input type="text"  placeholder="Nome" class="form-control" name ="name" [(ngModel)]="cliente.name">
+  <input type="number" placeholder="Idade" class="form-control" name="age" [(ngModel)]="cliente.age">
+  <input type="number" placeholder="Numero" class="form-control" name="number" [(ngModel)]="cliente.number" pattern="[0-9]{11}">
+  <input type="text" placeholder="Cidade" class="form-control" name="city" [(ngModel)]="cliente.city">
+
+
+  <input type="button" value="Cadastrar" *ngIf="bntCadastro" class="btn btn-primary" (click)="cadastrar()">
+  <input type="button" value="Alterar" *ngIf="!bntCadastro" class="btn btn-warning" (click)="editar()">
+  <input type="button" value="Remover" *ngIf="!bntCadastro" class="btn btn-danger" (click)="remover()" >
+  <input type="button" value="Cancelar" *ngIf="!bntCadastro" class="btn btn-secondary" (click)="cancelar()">
+
+</form>
+
+
+<table class="table" *ngIf="tabela">
+  <thead>
+    <tr *ngFor="let c of clientes; index as i">
+      <td>{{i+1}}</td>
+      <td>{{c.name}}</td>
+      <td>{{c.age}}</td>
+      <td>{{c.city}}</td>
+      <td>{{c.number}}</td>
+      <td><button class="btn btn-success" (click)="selecionarCliente(i)">Selecionar</button></td>
+    </tr>
+  </thead>
+  <tbody></tbody>
+
+</table>
